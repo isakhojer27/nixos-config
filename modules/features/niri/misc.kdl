@@ -11,7 +11,7 @@
     }
 
     cursor {
-        xcursor-theme "capitaine-cursors"
+        xcursor-theme "Adwaita"
         xcursor-size 24
     }
 
@@ -23,3 +23,10 @@
     hotkey-overlay {
        skip-at-startup
     }
+
+    blur {
+    passes 2
+    offset 1.0
+    noise 0.02
+    saturation 1.1
+}

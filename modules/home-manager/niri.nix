@@ -14,6 +14,19 @@
     NIXOS_OZONE_WL = "1";
   };
 
+  gtk = {
+  enable = true;
+  iconTheme = {
+    name = "Papirus";
+    package = pkgs.papirus-icon-theme;
+  };
+  cursorTheme = {
+    name = "Adwaita";
+    package = pkgs.adwaita-icon-theme;
+    size = 12;
+  };
+};
+
   home.packages = with pkgs; [
     xwayland-satellite
     fuzzel

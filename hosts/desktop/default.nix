@@ -34,8 +34,14 @@ hardware.graphics = {
 
   boot.kernelParams = [ "i915.enable_guc=3" ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.limine.enable = true;
+  boot.loader.limine.efiSupport = true;
+  boot.loader.limine.maxGenerations = 4;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 40d";
+  };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -68,7 +74,6 @@ hardware.graphics = {
   services.xserver.enable = true;
 
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
 
   services.xserver.xkb.layout = "se";
 
@@ -105,15 +110,29 @@ hardware.graphics = {
 
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.overlays = [
+    (_: prev: {
+      openldap = prev.openldap.overrideAttrs {
+        doCheck = false;
+      };
+    })
+  ];
+
   environment.systemPackages = with pkgs; [
     zed-editor
     git
-    alacritty
+    xdg-desktop-portal
+    kdePackages.dolphin
+    kdePackages.dolphin-plugins
+    kdePackages.kservice
+    kdePackages.baloo-widgets
+    kdePackages.baloo
+    papirus-icon-theme
 
     #gaming
     gamemode
     goverlay
-    #lutris
+    lutris
     mangohud
     mesa
     protonup-qt
@@ -121,6 +140,16 @@ hardware.graphics = {
     vulkan-loader
     winetricks
     wineWow64Packages.staging
+  ];
+
+  fonts.packages = with pkgs; [
+    corefonts
+    nerd-fonts._3270
+    gohufont
+    hack-font
+    google-fonts
+    scientifica
+    texlivePackages.jetbrainsmono-otf
   ];
 
   system.stateVersion = "26.05";

@@ -39,7 +39,6 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          # VIKTIGT: skickar inputs även till Home Manager
           home-manager.extraSpecialArgs = {
             inherit inputs;
           };

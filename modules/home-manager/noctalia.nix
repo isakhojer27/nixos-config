@@ -1,5 +1,4 @@
 { pkgs, inputs, ... }:
-
 {
   imports = [
     inputs.noctalia.homeModules.default
@@ -7,17 +6,7 @@
 
   programs.noctalia-shell = {
     enable = true;
-
-    settings = {
-      bar = {
-        density = "compact";
-        position = "right";
-      };
-
-      general = {
-        radiusRatio = 0.2;
-      };
-    };
+    settings = ./noctalia-settings.json;
   };
 
   home.packages = [

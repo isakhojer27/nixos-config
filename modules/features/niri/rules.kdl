@@ -3,10 +3,8 @@
         clip-to-geometry true
     }
 
-     // if you use steam you will probably like these
     window-rule {
         match app-id="steam"
-        exclude title=r#"^[Ss]team$"#
         open-floating true
     }
 
@@ -31,3 +29,10 @@
        match app-id="dev.zed.Zed"
        draw-border-with-background false
     }
+
+    window-rule {
+    match app-id="^Alacritty$"
+    background-effect {
+        blur true
+    }
+}
