@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -12,19 +18,19 @@
   # --- GPU / Intel Arc setup ---
   services.xserver.videoDrivers = [ "modesetting" ];
 
-hardware.graphics = {
-  enable = true;
-  enable32Bit = true;
-  extraPackages = with pkgs; [
-    intel-media-driver
-    vpl-gpu-rt
-    intel-compute-runtime
-    vulkan-validation-layers
-  ];
-  extraPackages32 = with pkgs; [
-    pkgs.driversi686Linux.intel-media-driver
-  ];
-};
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      vpl-gpu-rt
+      intel-compute-runtime
+      vulkan-validation-layers
+    ];
+    extraPackages32 = with pkgs; [
+      pkgs.driversi686Linux.intel-media-driver
+    ];
+  };
 
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "iHD";
@@ -55,7 +61,10 @@ hardware.graphics = {
 
   time.timeZone = "Europe/Stockholm";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -73,7 +82,17 @@ hardware.graphics = {
 
   services.xserver.enable = true;
 
-  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    package = pkgs.kdePackages.sddm;
+    theme = "sddm-astronaut-theme";
+    extraPackages = with pkgs.kdePackages; [
+      qtsvg
+      qtvirtualkeyboard
+      qtmultimedia
+    ];
+  };
 
   services.xserver.xkb.layout = "se";
 
@@ -90,17 +109,33 @@ hardware.graphics = {
 
   security.rtkit.enable = true;
   security.pam.loginLimits = [
-    { domain = "@gamemode"; type = "hard"; item = "rtprio"; value = "99"; }
-    { domain = "@gamemode"; type = "soft"; item = "rtprio"; value = "99"; }
+    {
+      domain = "@gamemode";
+      type = "hard";
+      item = "rtprio";
+      value = "99";
+    }
+    {
+      domain = "@gamemode";
+      type = "soft";
+      item = "rtprio";
+      value = "99";
+    }
   ];
 
   users.users.isakh = {
     isNormalUser = true;
     description = "Isak Höjer";
-    extraGroups = [ "networkmanager" "wheel" "gamemode" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "gamemode"
+    ];
   };
 
-  programs.firefox.enable = true;
+  #programs.firefox.enable = true;
+
+  programs.nix-ld.enable = true;
 
   programs.steam = {
     enable = true;
@@ -119,7 +154,13 @@ hardware.graphics = {
   ];
 
   environment.systemPackages = with pkgs; [
-    zed-editor
+    (sddm-astronaut.override {
+      embeddedTheme = "japanese_aesthetic";
+      themeConfig = {
+        Background = "${../../wallpapers/nix-wallpaper-gear.png}";
+        Font = "M+1 Nerd Font";
+      };
+    })
     git
     xdg-desktop-portal
     kdePackages.dolphin
@@ -147,6 +188,7 @@ hardware.graphics = {
     nerd-fonts._3270
     gohufont
     hack-font
+    nerd-fonts.jetbrains-mono
     google-fonts
     scientifica
     texlivePackages.jetbrainsmono-otf

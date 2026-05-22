@@ -1,11 +1,13 @@
 { pkgs, ... }:
 
 {
-imports = [
-  ../../modules/home-manager/niri.nix
-  ../../modules/home-manager/noctalia.nix
-  ../../modules/home-manager/alacritty.nix
-];
+  imports = [
+    ../../modules/home-manager/niri.nix
+    ../../modules/home-manager/noctalia.nix
+    ../../modules/home-manager/alacritty.nix
+    ../../modules/home-manager/zed.nix
+    ../../modules/home-manager/firefox
+  ];
   home.username = "isakh";
   home.homeDirectory = "/home/isakh";
 
@@ -14,12 +16,11 @@ imports = [
   programs.home-manager.enable = true;
 
   programs.fish = {
-  enable = true;
-  interactiveShellInit = "set -g fish_greeting";
-};
+    enable = true;
+    interactiveShellInit = "set -g fish_greeting";
+  };
 
   home.packages = with pkgs; [
-    firefox
     libreoffice-fresh
     spotify
     discord

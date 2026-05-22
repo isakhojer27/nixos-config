@@ -4,6 +4,21 @@
     enable = true;
     settings = {
       general.import = [ "~/.config/alacritty/themes/noctalia.toml" ];
+      font = {
+        normal = {
+          family = "JetBrainsMono Nerd Font Mono";
+          style = "Regular";
+        };
+        bold = {
+          family = "JetBrainsMono Nerd Font Mono";
+          style = "Bold";
+        };
+        italic = {
+          family = "JetBrainsMono Nerd Font Mono";
+          style = "Italic";
+        };
+        size = 11.0;
+      };
       window = {
         opacity = 0.5;
         blur = true;
@@ -14,10 +29,12 @@
       };
       terminal.shell = {
         program = "${pkgs.fish}/bin/fish";
-        args = [ "--command" "fastfetch; exec fish" ];
+        args = [
+          "--command"
+          "fastfetch; exec fish"
+        ];
       };
     };
   };
-
   home.packages = [ pkgs.fastfetch ];
 }

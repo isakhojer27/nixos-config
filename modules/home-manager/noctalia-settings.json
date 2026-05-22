@@ -621,6 +621,10 @@
       {
         "enabled": true,
         "id": "alacritty"
+      },
+      {
+        "enabled": true,
+        "id": "zed"
       }
     ],
     "enableUserTheming": true
