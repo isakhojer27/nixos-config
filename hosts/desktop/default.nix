@@ -126,6 +126,7 @@
   users.users.isakh = {
     isNormalUser = true;
     description = "Isak Höjer";
+    initialPassword = "test1234";
     extraGroups = [
       "networkmanager"
       "wheel"
