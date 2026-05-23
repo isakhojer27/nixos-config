@@ -96,6 +96,10 @@
 
   services.xserver.xkb.layout = "se";
 
+  systemd.user.services.dbus-broker = {
+    restartIfChanged = false;
+  };
+
   console.keyMap = "sv-latin1";
 
   services.printing.enable = true;
