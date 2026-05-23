@@ -162,8 +162,8 @@
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     configPackages = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "gtk";
   };
-
 
   environment.systemPackages = with pkgs; [
     (sddm-astronaut.override {
@@ -177,6 +177,7 @@
     xdg-desktop-portal
     kdePackages.dolphin
     kdePackages.dolphin-plugins
+    kdePackages.ark
     kdePackages.kservice
     kdePackages.baloo-widgets
     kdePackages.baloo

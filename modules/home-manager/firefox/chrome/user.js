@@ -13,12 +13,12 @@ License:           https://github.com/soulhotel/FF-ULTIMA/blob/main/LICENSE MPL 
 
 /* color schemes */
 user_pref("user.theme.0.default", false);
-user_pref("user.theme.transparent", true);
+user_pref("user.theme.transparent", false);
 user_pref("user.theme.catppuccin", false);
 user_pref("user.theme.catppuccin-frappe", false);
 user_pref("user.theme.catppuccin-mocha", false);
 user_pref("user.theme.gruvbox", false);
-user_pref("user.theme.kanagawa-wave", false);
+user_pref("user.theme.kanagawa-wave", true);
 user_pref("user.theme.midnight", false);
 user_pref("user.theme.midnight.animated.background", false);
 user_pref("user.theme.scarlet", false);
@@ -93,8 +93,8 @@ user_pref("ultima.tabs.closetabbutton.on.icon", false);
 user_pref("ultima.tabs.pinned.always.visible", false);
 user_pref("ultima.tabs.pinned.transparent.background", false);
 user_pref("ultima.tabs.tabbar.autohide+compact", false);
-user_pref("ultima.tabs.tabbar.autohide", false);
-user_pref("ultima.tabs.tabbar.disabled", false);
+user_pref("ultima.tabs.tabbar.autohide", true);
+user_pref("ultima.tabs.tabbar.disabled", true);
 user_pref("ultima.tabs.tabbar.hide.buttonstrip", false);
 user_pref("ultima.tabs.tabgroups.label.1", false);
 user_pref("ultima.tabs.tabgroups.label.2", false);
