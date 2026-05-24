@@ -34,6 +34,22 @@
     }
 
     window-rule {
+    match app-id="org.gnome.Nautilus"
+    background-effect {
+        blur true
+        }
+        opacity 0.88
+    }
+
+    window-rule {
+        match app-id="thunar"
+        background-effect {
+            blur true
+        }
+        opacity 0.80
+    }
+
+    window-rule {
     match app-id="^Alacritty$"
     background-effect {
         blur true

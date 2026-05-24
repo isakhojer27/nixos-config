@@ -32,8 +32,14 @@
     ];
   };
 
+  programs.dconf.enable = true;
+
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "iHD";
+    NIXOS_OZONE_WL = "1";
+
+    GTK_THEME = "adw-gtk3";
+    QT_QPA_PLATFORMTHEME = "qt6ct";
   };
 
   hardware.enableRedistributableFirmware = true;
@@ -158,11 +164,19 @@
     })
   ];
 
+  services.gvfs.enable = true;
+
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    configPackages = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = "gtk";
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
+    config.common = {
+      default = "gtk";
+      "org.freedesktop.impl.portal.ScreenCast" = "wlr";
+      "org.freedesktop.impl.portal.Screenshot" = "wlr";
+    };
   };
 
   environment.systemPackages = with pkgs; [
@@ -175,12 +189,6 @@
     })
     git
     xdg-desktop-portal
-    kdePackages.dolphin
-    kdePackages.dolphin-plugins
-    kdePackages.ark
-    kdePackages.kservice
-    kdePackages.baloo-widgets
-    kdePackages.baloo
     papirus-icon-theme
 
     #gaming

@@ -1,7 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.firefox = {
     enable = true;
+    configPath = ".mozilla/firefox";
     nativeMessagingHosts = [ pkgs.pywalfox-native ];
     profiles.default = {
       isDefault = true;
@@ -15,4 +16,5 @@
 
   home.file.".mozilla/firefox/default/user.js".source = ./chrome/user.js;
   home.file.".mozilla/firefox/default/chrome/theme".source = ./chrome/theme;
+
 }

@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   home.file.".config/niri/config.kdl".source = ../../modules/features/niri/config.kdl;
   home.file.".config/niri/animation.kdl".source = ../../modules/features/niri/animation.kdl;
@@ -13,19 +18,6 @@
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
   };
-
-  gtk = {
-  enable = true;
-  iconTheme = {
-    name = "Papirus";
-    package = pkgs.papirus-icon-theme;
-  };
-  cursorTheme = {
-    name = "Adwaita";
-    package = pkgs.adwaita-icon-theme;
-    size = 12;
-  };
-};
 
   home.packages = with pkgs; [
     xwayland-satellite

@@ -625,6 +625,10 @@
       {
         "enabled": true,
         "id": "zed"
+      },
+      {
+        "enabled": true,
+        "id": "gtk"
       }
     ],
     "enableUserTheming": true

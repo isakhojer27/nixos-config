@@ -7,6 +7,8 @@
     ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/zed.nix
     ../../modules/home-manager/firefox
+    ../../modules/home-manager/gtk.nix
+    ../../modules/home-manager/thunar.nix
   ];
   home.username = "isakh";
   home.homeDirectory = "/home/isakh";
@@ -24,6 +26,9 @@
     libreoffice-fresh
     spotify
     discord
+    vesktop
+    easyeffects
+    thunderbird
 
   ];
 }
