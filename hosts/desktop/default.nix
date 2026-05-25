@@ -55,7 +55,7 @@
     options = "--delete-older-than 40d";
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v4;
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -71,6 +71,8 @@
     "nix-command"
     "flakes"
   ];
+  nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
+  nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
 
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -162,6 +164,7 @@
         doCheck = false;
       };
     })
+    inputs.nix-cachyos-kernel.overlays.pinned
   ];
 
   services.gvfs.enable = true;
