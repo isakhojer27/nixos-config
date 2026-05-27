@@ -193,6 +193,8 @@
     git
     xdg-desktop-portal
     papirus-icon-theme
+    btop
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     #gaming
     gamemode
@@ -216,6 +218,7 @@
     google-fonts
     scientifica
     texlivePackages.jetbrainsmono-otf
+    nerd-fonts.meslo-lg
   ];
 
   system.stateVersion = "26.05";

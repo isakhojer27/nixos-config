@@ -240,7 +240,7 @@
     "smoothScrollEnabled": true
   },
   "ui": {
-    "fontDefault": "JetBrains Mono",
+    "fontDefault": "JetBrainsMono Nerd Font Mono",
     "fontFixed": "monospace",
     "fontDefaultScale": 0.95,
     "fontFixedScale": 0.95,
@@ -618,7 +618,7 @@
     "schedulingMode": "off",
     "manualSunrise": "06:30",
     "manualSunset": "18:30",
-    "generationMethod": "tonal-spot",
+    "generationMethod": "faithful",
     "monitorForColors": "",
     "syncGsettings": true
   },

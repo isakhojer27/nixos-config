@@ -27,10 +27,12 @@
     libreoffice-fresh
     spotify
     discord
-    vesktop
     easyeffects
     obsidian
     prismlauncher
+    vlc
+    ffmpeg
+    hypnotix
 
   ];
 }
