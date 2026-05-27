@@ -1,0 +1,9 @@
+/* =====================================================
+   PROTON THEME — style.css
+   Loaded by the XPI extension via theme_experiment
+   ===================================================== */
+
+:root {
+    --color-accent-primary: #e53265;
+    --color-accent-primary-hover: #e84774;
+}

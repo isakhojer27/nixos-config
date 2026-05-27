@@ -9,6 +9,7 @@
     ../../modules/home-manager/firefox
     ../../modules/home-manager/gtk.nix
     ../../modules/home-manager/thunar.nix
+    ../../modules/home-manager/thunderbird
   ];
   home.username = "isakh";
   home.homeDirectory = "/home/isakh";
@@ -28,7 +29,8 @@
     discord
     vesktop
     easyeffects
-    thunderbird
+    obsidian
+    prismlauncher
 
   ];
 }

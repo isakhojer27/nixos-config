@@ -1,0 +1,61 @@
+{
+  "manifest_version": 2,
+  "name": "Thunderbird Proton Theme",
+  "description": "A dark theme inspired by Proton Mail for Mozilla Thunderbird 128+",
+  "version": "1.2.0",
+  "author": "tinyprojekt",
+  "theme_experiment": {
+    "stylesheet": "style.css",
+    "colors": {},
+    "images": {},
+    "properties": {}
+  },
+  "theme": {
+    "colors": {
+      "frame": "#16141c",
+      "frame_inactive": "#16141c",
+      "tab_background_text": "#979bb0",
+      "tab_selected": "#1a1926",
+      "tab_text": "#ffffff",
+      "tab_line": "#8838ff",
+      "tab_loading": "#e53265",
+      "toolbar": "#16141c",
+      "toolbar_text": "#ffffff",
+      "toolbar_field": "#25283a",
+      "toolbar_field_text": "#ffffff",
+      "toolbar_field_border": "#34384e",
+      "toolbar_field_focus": "#25283a",
+      "toolbar_field_text_focus": "#ffffff",
+      "toolbar_field_border_focus": "#e53265",
+      "toolbar_top_separator": "#34384e",
+      "toolbar_bottom_separator": "#34384e",
+      "toolbar_vertical_separator": "#34384e",
+      "sidebar": "#16141c",
+      "sidebar_text": "#ffffff",
+      "sidebar_border": "#34384e",
+      "sidebar_highlight": "#25283a",
+      "sidebar_highlight_text": "#ffffff",
+      "popup": "#1e2130",
+      "popup_text": "#ffffff",
+      "popup_border": "#34384e",
+      "popup_highlight": "#25283a",
+      "popup_highlight_text": "#ffffff",
+      "button_background_hover": "#25283a",
+      "button_background_active": "#34384e",
+      "icons": "#979bb0",
+      "icons_attention": "#e53265",
+      "ntp_background": "#16141c",
+      "ntp_text": "#ffffff"
+    },
+    "properties": {
+      "color_scheme": "dark",
+      "content_color_scheme": "dark"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "proton-theme@tinyprojekt",
+      "strict_min_version": "128.0"
+    }
+  }
+}
