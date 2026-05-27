@@ -121,6 +121,12 @@
       ],
       "right": [
         {
+          "defaultSettings": {
+            "mode": "region"
+          },
+          "id": "plugin:screenshot"
+        },
+        {
           "blacklist": [],
           "chevronColor": "none",
           "colorizeIcons": false,
