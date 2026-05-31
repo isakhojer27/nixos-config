@@ -192,6 +192,8 @@
     };
   };
 
+  programs.gamemode.enable = true;
+
   environment.systemPackages = with pkgs; [
     (sddm-astronaut.override {
       embeddedTheme = "japanese_aesthetic";
@@ -204,8 +206,6 @@
     xdg-desktop-portal
     papirus-icon-theme
     btop
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-
     mesa
     vulkan-loader
 
