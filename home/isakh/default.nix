@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
-    ../../modules/home-manager/niri.nix
+    ../../modules/home-manager/niri
     ../../modules/home-manager/noctalia.nix
     ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/zed.nix
@@ -10,6 +10,7 @@
     ../../modules/home-manager/gtk.nix
     ../../modules/home-manager/thunar.nix
     ../../modules/home-manager/thunderbird
+    ../../modules/home-manager/gaming.nix
   ];
   home.username = "isakh";
   home.homeDirectory = "/home/isakh";
@@ -33,6 +34,9 @@
     vlc
     ffmpeg
     hypnotix
+    localsend
+    claude-code
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
   ];
 }

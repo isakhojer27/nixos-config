@@ -9,6 +9,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/nixos/fonts.nix
     inputs.niri.nixosModules.niri
   ];
 
@@ -56,6 +57,15 @@
   };
 
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v4;
+
+  fileSystems."/media/sekundär" = {
+    device = "/dev/disk/by-label/sekundär";
+    fsType = "ext4";
+    options = [
+      "defaults"
+      "nofail"
+    ];
+  };
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -196,30 +206,9 @@
     btop
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
-    #gaming
-    gamemode
-    goverlay
-    lutris
-    mangohud
     mesa
-    protonup-qt
-    vulkan-tools
     vulkan-loader
-    winetricks
-    wineWow64Packages.staging
-  ];
 
-  fonts.packages = with pkgs; [
-    corefonts
-    nerd-fonts._3270
-    gohufont
-    hack-font
-    nerd-fonts.jetbrains-mono
-    google-fonts
-    scientifica
-    texlivePackages.jetbrainsmono-otf
-    nerd-fonts.meslo-lg
   ];
-
   system.stateVersion = "26.05";
 }
