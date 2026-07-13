@@ -37,6 +37,10 @@
     localsend
     claude-code
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    gpu-screen-recorder
+    onlyoffice-desktopeditors
+    jan
+    lmstudio
 
   ];
 }

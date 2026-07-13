@@ -8,8 +8,7 @@
     };
     niri.url = "github:sodiboo/niri-flake";
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:noctalia-dev/noctalia/cachix";
     };
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";

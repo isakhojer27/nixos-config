@@ -10,5 +10,6 @@
     scientifica
     texlivePackages.jetbrainsmono-otf
     nerd-fonts.meslo-lg
+    cm_unicode
   ];
 }

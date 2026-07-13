@@ -69,6 +69,10 @@
           "usePadding": false
         },
         {
+          "defaultSettings": {
+            "precision": 8,
+            "showBarValue": true
+          },
           "id": "plugin:noctalia-calculator"
         },
         {
@@ -321,8 +325,8 @@
     "pinnedApps": [],
     "sortByMostUsed": true,
     "terminalCommand": "alacritty -e",
-    "customLaunchPrefixEnabled": false,
-    "customLaunchPrefix": "",
+    "customLaunchPrefixEnabled": true,
+    "customLaunchPrefix": "systemd-run --user --scope --collect --",
     "viewMode": "list",
     "showCategories": false,
     "iconMode": "tabler",
