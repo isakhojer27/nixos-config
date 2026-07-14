@@ -212,6 +212,7 @@
     btop
     mesa
     vulkan-loader
+    yazi
 
   ];
   system.stateVersion = "26.05";

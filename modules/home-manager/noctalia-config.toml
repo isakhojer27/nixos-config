@@ -1,0 +1,106 @@
+[accessibility]
+ui_scale = 0.90000000596046448
+
+[audio]
+sound_volume = 0.30999999307096004
+
+[bar.default]
+center = [ "clock", "settings" ]
+end = [ "tray", "screenshot", "notifications", "temp", "volume", "session" ]
+font_weight = 400
+margin_ends = 180
+padding = 41
+position = "bottom"
+scale = 0.90000000596046448
+start = [ "control-center", "workspaces" ]
+thickness = 24
+widget_spacing = 8
+
+[config]
+
+[control_center]
+hidden_tabs = [ "power", "bluetooth" ]
+
+[location]
+address = "Örebro"
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 960.0
+    cy = 961.0
+    output = "DP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
+
+[shell]
+corner_radius_scale = 0.20000000298023224
+font_family = "MesloLGL Nerd Font"
+
+    [shell.animation]
+    speed = 1.4000000208616257
+
+    [shell.launcher]
+    categories = false
+    session_search = true
+
+    [shell.panel]
+    borders = false
+
+[templates]
+
+[theme]
+builtin = "Ayu"
+community_palette = "Cyberpunk"
+custom_palette = "gruvbox-2-mo"
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-monochrome"
+
+    [theme.templates]
+    builtin_ids = [ "alacritty", "btop", "gtk3", "niri" ]
+
+[wallpaper.default]
+path = "/home/isakh/Pictures/Wallpapers/nixos/nix-wallpaper-nineish-dark-gray.png"
+
+[wallpaper.last]
+path = "/home/isakh/Pictures/Wallpapers/nixos/nix-wallpaper-nineish-dark-gray.png"
+
+[wallpaper.monitors.DP-1]
+path = "/home/isakh/Pictures/Wallpapers/nixos/nix-wallpaper-nineish-dark-gray.png"
+
+[widget.control-center]
+custom_image = "/nix/store/shwzw5jpl85nmy4d93nsk6mwj292d1di-noctalia-5.0.0/share/noctalia/assets/images/distros/nixos.svg"
+custom_image_colorize = true
+
+[widget.temp]
+capsule = true
+display = "text"
+scale = 0.85000000000000009
+stat = "cpu_usage"
+
+[widget.workspaces]
+active_pill_size = 1.0
+capsule_radius = 1

@@ -41,6 +41,7 @@
     onlyoffice-desktopeditors
     jan
     lmstudio
+    qbittorrent
 
   ];
 }
