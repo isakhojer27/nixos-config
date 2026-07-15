@@ -11,6 +11,7 @@
     ../../modules/home-manager/thunar.nix
     ../../modules/home-manager/thunderbird
     ../../modules/home-manager/gaming.nix
+    ../../modules/home-manager/yazi.nix
   ];
   home.username = "isakh";
   home.homeDirectory = "/home/isakh";
@@ -25,7 +26,6 @@
   };
 
   home.packages = with pkgs; [
-    libreoffice-fresh
     spotify
     discord
     easyeffects
@@ -37,11 +37,10 @@
     localsend
     claude-code
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-    gpu-screen-recorder
     onlyoffice-desktopeditors
-    jan
     lmstudio
     qbittorrent
+    nirimod
 
   ];
 }

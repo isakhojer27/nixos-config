@@ -166,6 +166,7 @@
 
   programs.steam = {
     enable = true;
+    package = pkgs.millennium-steam;
     remotePlay.openFirewall = true;
     gamescopeSession.enable = true;
   };
@@ -212,7 +213,6 @@
     btop
     mesa
     vulkan-loader
-    yazi
 
   ];
   system.stateVersion = "26.05";
