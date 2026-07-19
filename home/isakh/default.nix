@@ -38,9 +38,11 @@
     claude-code
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     onlyoffice-desktopeditors
-    lmstudio
     qbittorrent
+    lmstudio
     nirimod
+    brave
+    transmission_4-gtk
 
   ];
 }

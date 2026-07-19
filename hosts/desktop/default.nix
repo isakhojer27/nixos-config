@@ -45,6 +45,8 @@
 
   hardware.enableRedistributableFirmware = true;
 
+  boot.loader.timeout = 1;
+  boot.initrd.systemd.enable = true;
   boot.kernelParams = [ "i915.enable_guc=3" ];
 
   boot.loader.limine.enable = true;
@@ -70,10 +72,17 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
-  networking.networkmanager.insertNameservers = [
-    "1.1.1.1"
-    "8.8.8.8"
-  ];
+  services.mullvad-vpn = {
+      enable = true;
+      package = pkgs.mullvad-vpn;
+    };
+
+    services.resolved.enable = true;
+
+    networking.nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+    ];
 
   time.timeZone = "Europe/Stockholm";
 
@@ -159,8 +168,6 @@
       "gamemode"
     ];
   };
-
-  #programs.firefox.enable = true;
 
   programs.nix-ld.enable = true;
 
