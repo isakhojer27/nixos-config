@@ -6,7 +6,7 @@ sound_volume = 0.30999999307096004
 
 [bar.default]
 center = [ "clock", "settings" ]
-end = [ "tray", "screenshot", "notifications", "temp", "volume", "session" ]
+end = [ "tray", "bar", "screenshot", "notifications", "temp", "volume", "session" ]
 font_weight = 400
 margin_ends = 180
 padding = 41
@@ -35,11 +35,13 @@ widget_order = [ "lockscreen-login-box@DP-1" ]
     visible = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
-    box_height = 70.0
-    box_width = 400.0
+    box_height = 196.0
+    box_width = 720.0
     cx = 960.0
     cy = 961.0
     output = "DP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "login_box"
 
@@ -50,10 +52,17 @@ widget_order = [ "lockscreen-login-box@DP-1" ]
         center_password_text = false
         input_opacity = 1.0
         input_radius = 6.0
+        layout = "regular"
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
-        show_password_hint = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[plugins]
+enabled = [ "raycursive/discord-voice" ]
 
 [shell]
 corner_radius_scale = 0.20000000298023224
@@ -73,7 +82,7 @@ font_family = "MesloLGL Nerd Font"
 
 [theme]
 builtin = "Ayu"
-community_palette = "Cyberpunk"
+community_palette = "ADW"
 custom_palette = "gruvbox-2-mo"
 mode = "dark"
 source = "wallpaper"
@@ -83,13 +92,18 @@ wallpaper_scheme = "m3-monochrome"
     builtin_ids = [ "alacritty", "btop", "gtk3", "niri" ]
 
 [wallpaper.default]
-path = "/home/isakh/Pictures/Wallpapers/nixos/nix-wallpaper-nineish-dark-gray.png"
+path = "/home/isakh/Pictures/Wallpapers/wp12329546-nixos-wallpapers.jpg"
 
 [wallpaper.last]
-path = "/home/isakh/Pictures/Wallpapers/nixos/nix-wallpaper-nineish-dark-gray.png"
+path = "/home/isakh/Pictures/Wallpapers/wp12329546-nixos-wallpapers.jpg"
 
 [wallpaper.monitors.DP-1]
-path = "/home/isakh/Pictures/Wallpapers/nixos/nix-wallpaper-nineish-dark-gray.png"
+path = "/home/isakh/Pictures/Wallpapers/wp12329546-nixos-wallpapers.jpg"
+
+[widget.bar]
+hide_when_disconnected = true
+show_channel_name = false
+type = "raycursive/discord-voice:bar"
 
 [widget.control-center]
 custom_image = "/nix/store/shwzw5jpl85nmy4d93nsk6mwj292d1di-noctalia-5.0.0/share/noctalia/assets/images/distros/nixos.svg"
