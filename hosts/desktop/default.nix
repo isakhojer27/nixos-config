@@ -47,7 +47,6 @@
 
   boot.loader.timeout = 1;
   boot.initrd.systemd.enable = true;
-  boot.kernelParams = [ "i915.enable_guc=3" ];
   boot.kernelModules = [ "ntsync" ];
 
   boot.loader.limine.enable = true;
