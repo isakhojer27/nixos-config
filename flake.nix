@@ -18,11 +18,14 @@
       url = "github:srinivasr/nirimod";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    bedrock-on-linux = {
+      url = "github:Wyze3306/BedrockOnLinux";
+    };
     zed-extensions = {
       url = "github:DuskSystems/nix-zed-extensions";
     };
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
-    millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
+    #millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
   };
   outputs =
     inputs@{
@@ -48,7 +51,7 @@
             nixpkgs.overlays = [
               inputs.zed-extensions.overlays.default
               inputs.nirimod.overlays.default
-              inputs.millennium.overlays.default
+              #inputs.millennium.overlays.default
             ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

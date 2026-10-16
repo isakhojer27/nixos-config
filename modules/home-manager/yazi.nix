@@ -5,6 +5,10 @@
     enable = true;
     enableFishIntegration = true;
 
+    plugins = {
+      smart-enter = pkgs.yaziPlugins.smart-enter;
+    };
+
     settings = {
       mgr = {
         show_hidden = false;
@@ -13,25 +17,26 @@
       };
 
       opener = {
-              image = [
-                { run = ''imv "$@"''; desc = "Öppna i imv"; orphan = true; }
-              ];
-              video = [
-                { run = ''vlc "$@"''; desc = "Öppna i VLC"; orphan = true; }
-              ];
-              pdf = [
-                { run = ''zen "$@"''; desc = "Öppna i Zen"; orphan = true; }
-              ];
-              edit = [
-                { run = ''$EDITOR "$@"''; desc = "Redigera"; block = true; }
-              ];
-              office = [
-                { run = ''desktopeditors "$@"''; desc = "Öppna i OnlyOffice"; orphan = true; }
-              ];
-              fallback = [
-                { run = ''xdg-open "$@"''; desc = "Öppna med systemets standard"; orphan = true; }
-              ];
-            };
+        image = [
+          { run = ''imv "$@"''; desc = "Öppna i imv"; orphan = true; }
+        ];
+        video = [
+          { run = ''vlc "$@"''; desc = "Öppna i VLC"; orphan = true; }
+        ];
+        pdf = [
+          { run = ''xdg-open "$1"''; desc = "Öppna med systemets standard"; orphan = true; }
+        ];
+        edit = [
+          { run = ''$EDITOR "$@"''; desc = "Redigera"; block = true; }
+        ];
+        office = [
+          { run = ''onlyoffice-desktopeditors "$@"''; desc = "Öppna i OnlyOffice"; orphan = true; }
+          { run = ''xdg-open "$1"''; desc = "Öppna med systemets standard"; orphan = true; }
+        ];
+        fallback = [
+          { run = ''xdg-open "$1"''; desc = "Öppna med systemets standard"; orphan = true; }
+        ];
+      };
 
       open = {
         rules = [
@@ -50,25 +55,24 @@
 
     keymap = {
       mgr.prepend_keymap = [
+        { on = [ "<Enter>" ]; run = "plugin smart-enter"; desc = "Öppna fil / gå in i mapp"; }
+
         { on = [ "<C-c>" ]; run = "yank";       desc = "Kopiera"; }
         { on = [ "<C-x>" ]; run = "yank --cut"; desc = "Klipp ut"; }
         { on = [ "<C-v>" ]; run = "paste";      desc = "Klistra in"; }
         { on = [ "<C-o>" ]; run = "spot";       desc = "Egenskaper"; }
 
-        { on = [ "<C-r>" ]; run = "rename";                    desc = "Döp om"; }
-        { on = [ "<F2>" ];  run = "rename";                    desc = "Döp om"; }
+        { on = [ "<C-r>" ];      run = "rename";               desc = "Döp om"; }
+        { on = [ "<F2>" ];       run = "rename";               desc = "Döp om"; }
         { on = [ "<Delete>" ];   run = "remove";               desc = "Till papperskorg"; }
         { on = [ "<S-Delete>" ]; run = "remove --permanently"; desc = "Radera permanent"; }
         { on = [ "<C-n>" ];      run = "create";               desc = "Ny fil/mapp"; }
 
         { on = [ "<C-a>" ]; run = "toggle_all --state=on"; desc = "Markera allt"; }
 
-        { on = [ "<C-f>" ]; run = "find";             desc = "Sök"; }
-        { on = [ "<C-l>" ]; run = "cd --interactive"; desc = "Gå till sökväg"; }
-        { on = [ "<Backspace>" ]; run = "leave";      desc = "Upp en nivå"; }
-
-        { on = [ "<LeftClick>" ];  run = "open"; desc = "Öppna"; }
-        { on = [ "<RightClick>" ]; run = "spot"; desc = "Egenskaper"; }
+        { on = [ "<C-f>" ];       run = "find";             desc = "Sök"; }
+        { on = [ "<C-l>" ];       run = "cd --interactive"; desc = "Gå till sökväg"; }
+        { on = [ "<Backspace>" ]; run = "leave";            desc = "Upp en nivå"; }
       ];
     };
   };

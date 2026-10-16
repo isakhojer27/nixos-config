@@ -14,7 +14,7 @@
   ];
 
   programs.niri.enable = true;
-  programs.niri.package = inputs.niri.packages.${pkgs.system}.niri-unstable;
+  programs.niri.package = pkgs.niri;
 
   # --- GPU / Intel Arc setup ---
   services.xserver.videoDrivers = [ "modesetting" ];
@@ -48,20 +48,22 @@
   boot.loader.timeout = 1;
   boot.initrd.systemd.enable = true;
   boot.kernelParams = [ "i915.enable_guc=3" ];
+  boot.kernelModules = [ "ntsync" ];
 
   boot.loader.limine.enable = true;
   boot.loader.limine.efiSupport = true;
-  boot.loader.limine.maxGenerations = 4;
+  boot.loader.limine.maxGenerations = 10;
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 40d";
   };
 
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v4;
+ #boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v4;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   fileSystems."/media/sekundär" = {
-    device = "/dev/disk/by-label/sekundär";
+    device = "/dev/disk/by-uuid/63765771-c3d2-47d1-9739-19179886c7c3";
     fsType = "ext4";
     options = [
       "defaults"
@@ -74,7 +76,7 @@
 
   services.mullvad-vpn = {
       enable = true;
-      package = pkgs.mullvad-vpn;
+      gui.enable = true;
     };
 
     services.resolved.enable = true;
@@ -90,8 +92,6 @@
     "nix-command"
     "flakes"
   ];
-  nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
-  nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
   nix.settings.extra-substituters = [ "https://noctalia.cachix.org" ];
   nix.settings.extra-trusted-public-keys = [
     "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
@@ -173,7 +173,6 @@
 
   programs.steam = {
     enable = true;
-    package = pkgs.millennium-steam;
     remotePlay.openFirewall = true;
     gamescopeSession.enable = true;
   };
@@ -186,7 +185,6 @@
         doCheck = false;
       };
     })
-    inputs.nix-cachyos-kernel.overlays.pinned
   ];
 
   services.gvfs.enable = true;
@@ -194,13 +192,13 @@
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
-      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gnome
       xdg-desktop-portal-gtk
     ];
     config.common = {
       default = "gtk";
-      "org.freedesktop.impl.portal.ScreenCast" = "wlr";
-      "org.freedesktop.impl.portal.Screenshot" = "wlr";
+      "org.freedesktop.impl.portal.ScreenCast" = "gnome";
+      "org.freedesktop.impl.portal.Screenshot" = "gnome";
     };
   };
 
@@ -220,6 +218,10 @@
     btop
     mesa
     vulkan-loader
+    python3
+    protontricks
+    gamescope
+    euro-office-desktopeditors
 
   ];
   system.stateVersion = "26.05";

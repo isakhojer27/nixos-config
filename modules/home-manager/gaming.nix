@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   home.packages = with pkgs; [
     lutris
@@ -8,5 +8,7 @@
     winetricks
     wineWow64Packages.staging
     vulkan-tools
+
+    inputs.bedrock-on-linux.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }
