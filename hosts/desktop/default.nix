@@ -10,7 +10,6 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos/fonts.nix
-    inputs.niri.nixosModules.niri
   ];
 
   programs.niri.enable = true;

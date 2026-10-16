@@ -6,7 +6,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri.url = "github:sodiboo/niri-flake";
     noctalia = {
       url = "github:noctalia-dev/noctalia/cachix";
     };
@@ -30,7 +29,6 @@
       self,
       nixpkgs,
       home-manager,
-      niri,
       ...
     }:
     let
@@ -49,7 +47,6 @@
             nixpkgs.overlays = [
               inputs.zed-extensions.overlays.default
               inputs.nirimod.overlays.default
-              #inputs.millennium.overlays.default
             ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
