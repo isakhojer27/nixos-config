@@ -1,5 +1,19 @@
 { pkgs, inputs, ... }:
 
+let
+  zenBase = inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
+
+  zen = pkgs.symlinkJoin {
+    name = "zen-browser-with-ffmpeg";
+    paths = [ zenBase ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      rm $out/bin/zen
+      makeWrapper ${zenBase}/bin/zen $out/bin/zen \
+        --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath [ pkgs.ffmpeg ]}
+    '';
+  };
+in
 {
   imports = [
     ../../modules/home-manager/niri
@@ -13,9 +27,9 @@
     ../../modules/home-manager/gaming.nix
     ../../modules/home-manager/yazi.nix
   ];
+
   home.username = "isakh";
   home.homeDirectory = "/home/isakh";
-
   home.stateVersion = "24.05";
 
   programs.home-manager.enable = true;
@@ -36,13 +50,15 @@
     hypnotix
     localsend
     claude-code
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    zen
     onlyoffice-desktopeditors
     qbittorrent
     lmstudio
     nirimod
     brave
     transmission_4-gtk
-
+    unzip
+    p7zip
+    vesktop
   ];
 }
