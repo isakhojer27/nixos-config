@@ -14,9 +14,7 @@
   home.file.".config/niri/layout.kdl".source = ./layout.kdl;
   home.file.".config/niri/rules.kdl".source = ./rules.kdl;
   home.file.".config/niri/misc.kdl".source = ./misc.kdl;
-  home.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
+  # NIXOS_OZONE_WL och portals sätts på systemnivå (modules/nixos/desktop/integration.nix)
   home.packages = with pkgs; [
     xwayland-satellite
     fuzzel
@@ -24,7 +22,6 @@
     swaylock
     playerctl
     brightnessctl
-    xdg-desktop-portal-gtk
     nirimod # från overlayn i modules/nixos/desktop/niri.nix
   ];
 }
