@@ -26,6 +26,7 @@ in
     ../../modules/home-manager/thunderbird
     ../../modules/home-manager/gaming.nix
     ../../modules/home-manager/yazi.nix
+    ../../modules/home-manager/ableton.nix
   ];
 
   home.username = "isakh";
@@ -51,14 +52,13 @@ in
     localsend
     claude-code
     zen
-    onlyoffice-desktopeditors
     qbittorrent
     lmstudio
     nirimod
-    brave
     transmission_4-gtk
     unzip
     p7zip
-    vesktop
+    euro-office-desktopeditors
+    mailspring
   ];
 }

@@ -73,7 +73,12 @@ font_family = "MesloLGL Nerd Font"
 
     [shell.launcher]
     categories = false
+    default_view = "all"
+    layout = "simple"
     session_search = true
+
+        [shell.launcher.providers.calculator]
+        global = true
 
     [shell.panel]
     borders = false

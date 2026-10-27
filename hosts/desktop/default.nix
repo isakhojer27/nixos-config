@@ -142,18 +142,10 @@
 
   security.rtkit.enable = true;
   security.pam.loginLimits = [
-    {
-      domain = "@gamemode";
-      type = "hard";
-      item = "rtprio";
-      value = "99";
-    }
-    {
-      domain = "@gamemode";
-      type = "soft";
-      item = "rtprio";
-      value = "99";
-    }
+    { domain = "@gamemode"; type = "hard"; item = "rtprio";  value = "99"; }
+    { domain = "@gamemode"; type = "soft"; item = "rtprio";  value = "99"; }
+    { domain = "@gamemode"; type = "hard"; item = "memlock"; value = "unlimited"; }
+    { domain = "@gamemode"; type = "soft"; item = "memlock"; value = "unlimited"; }
   ];
 
   users.users.isakh = {
@@ -219,8 +211,6 @@
     python3
     protontricks
     gamescope
-    euro-office-desktopeditors
-
   ];
   system.stateVersion = "26.05";
 }
