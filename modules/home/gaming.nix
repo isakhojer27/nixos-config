@@ -8,6 +8,7 @@
     winetricks
     wineWow64Packages.staging
     vulkan-tools
+    prismlauncher
 
     inputs.bedrock-on-linux.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];

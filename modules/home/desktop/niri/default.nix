@@ -25,5 +25,6 @@
     playerctl
     brightnessctl
     xdg-desktop-portal-gtk
+    nirimod # från overlayn i modules/nixos/desktop/niri.nix
   ];
 }
