@@ -4,8 +4,6 @@
 {
   imports = [
     ./zen.nix
-    ./firefox
-    ./thunderbird
     ./zed.nix
     ./yazi.nix
     ./ableton.nix
