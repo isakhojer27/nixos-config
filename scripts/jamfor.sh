@@ -28,12 +28,22 @@ nix build ".#nixosConfigurations.$host.config.home-manager.users.isakh.home-file
 
 # Ett fingeravtryck per fil: sökväg + kontrollsumma av innehållet
 # där /nix/store-hashar har ersatts med ett fast värde.
+# Länkar som pekar ut ur /nix/store (t.ex. till /var/lib) läses inte;
+# där jämförs bara vart länken pekar.
 fingerprint() {
   (
     cd "$1"
-    find -L . -type f | LC_ALL=C sort | while IFS= read -r f; do
-      sum="$(sed -E 's#/nix/store/[a-z0-9]{32}-#/nix/store/-#g' "$f" | md5sum | cut -c1-12)"
-      printf '%s %s\n' "$f" "$sum"
+    find -L . -type f 2>/dev/null | LC_ALL=C sort | while IFS= read -r f; do
+      real="$(readlink -f "$f")"
+      case "$real" in
+        /nix/store/*)
+          sum="$(sed -E 's#/nix/store/[a-z0-9]{32}-#/nix/store/-#g' "$f" | md5sum | cut -c1-12)"
+          printf '%s %s\n' "$f" "$sum"
+          ;;
+        *)
+          printf '%s -> %s\n' "$f" "$real"
+          ;;
+      esac
     done
   )
 }
