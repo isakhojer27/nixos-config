@@ -30,22 +30,42 @@ nix build ".#nixosConfigurations.$host.config.home-manager.users.isakh.home-file
 # där /nix/store-hashar har ersatts med ett fast värde.
 # Länkar som pekar ut ur /nix/store (t.ex. till /var/lib) läses inte;
 # där jämförs bara vart länken pekar.
+# (Python istället för en skal-loop: /etc har tiotusentals filer, t.ex.
+# fish-completions, och att starta flera processer per fil tar för lång tid.)
 fingerprint() {
-  (
-    cd "$1"
-    find -L . -type f 2>/dev/null | LC_ALL=C sort | while IFS= read -r f; do
-      real="$(readlink -f "$f")"
-      case "$real" in
-        /nix/store/*)
-          sum="$(sed -E 's#/nix/store/[a-z0-9]{32}-#/nix/store/-#g' "$f" | md5sum | cut -c1-12)"
-          printf '%s %s\n' "$f" "$sum"
-          ;;
-        *)
-          printf '%s -> %s\n' "$f" "$real"
-          ;;
-      esac
-    done
-  )
+  python3 - "$1" <<'PY'
+import hashlib, os, re, sys
+
+root = sys.argv[1]
+store_hash = re.compile(rb"/nix/store/[a-z0-9]{32}-")
+seen_dirs = set()
+lines = []
+
+for dirpath, dirnames, filenames in os.walk(root, followlinks=True):
+    real_dir = os.path.realpath(dirpath)
+    if not real_dir.startswith("/nix/store/") or real_dir in seen_dirs:
+        dirnames[:] = []  # gå inte in i mappar utanför storen, eller i loopar
+        if not real_dir.startswith("/nix/store/"):
+            lines.append(f"./{os.path.relpath(dirpath, root)} -> {real_dir}")
+        continue
+    seen_dirs.add(real_dir)
+    for name in filenames:
+        path = os.path.join(dirpath, name)
+        rel = "./" + os.path.relpath(path, root)
+        real = os.path.realpath(path)
+        if not real.startswith("/nix/store/"):
+            lines.append(f"{rel} -> {real}")
+            continue
+        try:
+            with open(path, "rb") as f:
+                data = store_hash.sub(b"/nix/store/-", f.read())
+            lines.append(f"{rel} {hashlib.md5(data).hexdigest()[:12]}")
+        except OSError:
+            lines.append(f"{rel} (kunde inte läsas)")
+
+for line in sorted(lines):
+    print(line)
+PY
 }
 
 compare() {
