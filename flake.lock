@@ -24,16 +24,15 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1789657510,
-        "narHash": "sha256-gLVOKHaRWXOwFUpGl4zH4grSPkHe8sRObkonToblkRo=",
+        "lastModified": 1793207310,
+        "narHash": "sha256-HgVto63GftwPNWDNVSUPA4HrXy8A60bqTJxNphF9Z5E=",
         "owner": "Wyze3306",
         "repo": "BedrockOnLinux",
-        "rev": "d27d7b25b702939146b1e96cf2a0d1795d41b87d",
+        "rev": "99172a2311ac2380d10f57a1fbd3f24d4d0f058b",
         "type": "github"
       },
       "original": {
         "owner": "Wyze3306",
-        "ref": "v2.2.7",
         "repo": "BedrockOnLinux",
         "type": "github"
       }
@@ -96,11 +95,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1786384358,
-        "narHash": "sha256-RzPPiWeUtuvymnpuEWsdtzli5w4kjZs49FqEs3/1u+I=",
+        "lastModified": 1792502884,
+        "narHash": "sha256-IoNisKcGbUjdd45qCqywGMCYmZ5EnkxezvLII0FWwNA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "2fcb964de67fcf60b43471c55d5d99e61a9ccb5a",
+        "rev": "02c087f3fe673c9e317f206a627cb6b910336dbe",
         "type": "github"
       },
       "original": {
