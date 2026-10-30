@@ -18,7 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     bedrock-on-linux = {
-      url = "github:Wyze3306/BedrockOnLinux/v2.2.7";
+      url = "github:Wyze3306/BedrockOnLinux";
     };
     zed-extensions = {
       url = "github:DuskSystems/nix-zed-extensions";

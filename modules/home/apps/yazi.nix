@@ -4,6 +4,7 @@
   programs.yazi = {
     enable = true;
     enableFishIntegration = true;
+    shellWrapperName = "y"; # starta med `y`, hamna i mappen du lämnade
 
     plugins = {
       smart-enter = pkgs.yaziPlugins.smart-enter;

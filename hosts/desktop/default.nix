@@ -11,8 +11,8 @@
     ../../modules/nixos/services/printing.nix
   ];
 
-  # TODO fas 2: byt till "desktop" så att det matchar namnet i flake.nix
-  networking.hostName = "nixos";
+  # Samma namn som i flake.nix, så att `nixos-rebuild switch --flake .` räcker
+  networking.hostName = "desktop";
 
   fileSystems."/media/sekundär" = {
     device = "/dev/disk/by-uuid/63765771-c3d2-47d1-9739-19179886c7c3";

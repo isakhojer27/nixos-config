@@ -3,7 +3,7 @@
   boot.loader.limine.enable = true;
   boot.loader.limine.efiSupport = true;
   boot.loader.limine.maxGenerations = 10;
-  boot.loader.timeout = 1;
+  boot.loader.timeout = 5; # tid att välja en äldre generation om något går sönder
 
   boot.initrd.systemd.enable = true;
 
