@@ -16,7 +16,7 @@
       style = "Fusion"; # följer färgpaletten fullt ut
       custom_palette = true;
       color_scheme_path = "${config.xdg.configHome}/qt6ct/colors/noctalia.conf";
-      icon_theme = "Papirus";
+      # icon_theme sätts i icons.nix
     };
   };
 }

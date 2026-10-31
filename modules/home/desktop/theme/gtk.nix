@@ -8,10 +8,7 @@
       name = "adw-gtk3";
       package = pkgs.adw-gtk3;
     };
-    iconTheme = {
-      name = "Papirus";
-      package = pkgs.papirus-icon-theme;
-    };
+    # iconTheme sätts i icons.nix
     cursorTheme = {
       name = "Adwaita";
       package = pkgs.adwaita-icon-theme;
