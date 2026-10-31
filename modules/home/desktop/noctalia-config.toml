@@ -88,22 +88,28 @@ font_family = "MesloLGL Nerd Font"
 [theme]
 builtin = "Ayu"
 community_palette = "ADW"
-custom_palette = "gruvbox-2-mo"
+custom_palette = "Kemuri Hokkaido"
 mode = "dark"
-source = "wallpaper"
-wallpaper_scheme = "m3-monochrome"
+source = "custom"
+wallpaper_scheme = "m3-content"
 
     [theme.templates]
-    builtin_ids = [ "alacritty", "btop", "gtk3", "niri" ]
+    builtin_ids = [ "alacritty", "btop", "gtk3", "niri", "qt" ]
+    community_ids = [ "obsidian", "zed", "fastfetch", "mailspring" ]
+
+        [theme.templates.user.noctalia-papirus]
+        input_path = "$XDG_CONFIG_HOME/noctalia/templates/Noctalia-Papirus.sh"
+        output_path = "~/.cache/noctalia/Noctalia-Papirus-apply.sh"
+        post_hook = "bash ~/.cache/noctalia/Noctalia-Papirus-apply.sh"
 
 [wallpaper.default]
-path = "/home/isakh/Pictures/Wallpapers/wp12329546-nixos-wallpapers.jpg"
+path = "/home/isakh/Pictures/Wallpapers/DP-19017-001.jpg"
 
 [wallpaper.last]
-path = "/home/isakh/Pictures/Wallpapers/wp12329546-nixos-wallpapers.jpg"
+path = "/home/isakh/Pictures/Wallpapers/DP-19017-001.jpg"
 
 [wallpaper.monitors.DP-1]
-path = "/home/isakh/Pictures/Wallpapers/wp12329546-nixos-wallpapers.jpg"
+path = "/home/isakh/Pictures/Wallpapers/DP-19017-001.jpg"
 
 [widget.bar]
 hide_when_disconnected = true
