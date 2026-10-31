@@ -3,8 +3,8 @@
   imports = [
     ./niri
     ./noctalia.nix
-    ./gtk.nix
+    ./theme
     ./alacritty.nix
-    ./thunar.nix
+    ./file-manager.nix
   ];
 }

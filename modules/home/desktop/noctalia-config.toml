@@ -94,7 +94,7 @@ source = "wallpaper"
 wallpaper_scheme = "m3-monochrome"
 
     [theme.templates]
-    builtin_ids = [ "alacritty", "btop", "gtk3", "niri" ]
+    builtin_ids = [ "alacritty", "btop", "gtk3", "niri", "qt" ]
 
 [wallpaper.default]
 path = "/home/isakh/Pictures/Wallpapers/wp12329546-nixos-wallpapers.jpg"

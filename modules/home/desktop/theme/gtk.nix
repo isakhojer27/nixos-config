@@ -1,3 +1,4 @@
+# GTK-appar får färger från Noctalias mallar "gtk3"/"gtk4" (noctalia.css).
 { pkgs, ... }:
 {
   xdg.configFile."gtk-4.0/gtk.css".force = true;
