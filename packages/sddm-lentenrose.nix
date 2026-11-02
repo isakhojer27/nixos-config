@@ -39,6 +39,9 @@ stdenvNoCC.mkDerivation {
       rm -rf ${dir}/Previews ${dir}/README.md
 
       # Qt5 -> Qt6
+      # SDDM väljer greeter efter QtVersion i metadata.desktop. Utan raden antas
+      # Qt5, den greetern finns inte, och SDDM visar sitt standardtema.
+      sed -i '/^\[SddmGreeterTheme\]/a QtVersion=6' ${dir}/metadata.desktop
       grep -rl 'import QtGraphicalEffects' ${dir} | xargs sed -i \
         's/import QtGraphicalEffects 1.0/import Qt5Compat.GraphicalEffects/'
       # Qt6 vägrar lägga sessionsväljaren (ComboBox) i en property av typen
