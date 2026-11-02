@@ -61,6 +61,9 @@ in
       font-family = font;
     })) {
       General.animated-background-placeholder = "login-screen.png";
+      # Avstånd mellan klockan och datumet. Temat har -15 (anpassat för sitt
+      # eget typsnitt); med Press Start 2P hamnar de då ovanpå varandra.
+      "LockScreen.Date".margin-top = 20;
       LockScreen.background = "login-screen.mp4";
       LoginScreen.background = "login-screen.mp4";
     };
