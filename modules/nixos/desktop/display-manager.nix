@@ -1,28 +1,25 @@
-# Inloggningsskärmen: SDDM med temat LentenRose (packages/sddm-lentenrose.nix).
-{ pkgs, ... }:
-let
-  lentenrose = pkgs.callPackage ../../../packages/sddm-lentenrose.nix {
-    # Värden här skriver över temats theme.conf. Typsnittet Manrope kommer
-    # från google-fonts i fonts.nix.
-    themeConfig = {
-      Font = "Manrope";
-    };
-  };
-in
+# Inloggningsskärmen: SDDM med temat SilentSDDM.
+# https://github.com/uiriansan/SilentSDDM
+#
+# Temats NixOS-modul sköter SDDM, Qt-beroenden och typsnitt.
+# Alla inställningar: https://github.com/uiriansan/SilentSDDM/wiki/Options
+{ inputs, ... }:
 {
+  imports = [ inputs.silentSDDM.nixosModules.default ];
+
   services.xserver.enable = true;
 
-  services.displayManager.sddm = {
+  programs.silentSDDM = {
     enable = true;
-    wayland.enable = true;
-    package = pkgs.kdePackages.sddm;
-    theme = "LentenRose";
-    extraPackages = with pkgs.kdePackages; [
-      qt5compat # skuggeffekterna i temat
-      qtsvg # användarikonen
-      qtvirtualkeyboard # skärmtangentbordet
-    ];
-  };
 
-  environment.systemPackages = [ lentenrose ];
+    # Färdiga varianter (förhandsvisningar finns i temats docs/previews):
+    # default, default-left, default-right, rei, ken, silvia, nord, gruvbox,
+    # everforest, catppuccin-{latte,frappe,macchiato,mocha}, eldritch-{abyss,cthulhu,dusk}
+    theme = "default";
+
+    # Egna bakgrunder och inställningar läggs till här senare, t.ex.:
+    # backgrounds.mountains = ../../../wallpapers/mountains.jpg;
+    # settings."LoginScreen".background = "mountains.jpg";
+    # settings."LockScreen".background = "mountains.jpg";
+  };
 }
