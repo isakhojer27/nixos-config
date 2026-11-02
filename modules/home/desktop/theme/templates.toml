@@ -1,0 +1,13 @@
+# Egna Noctalia-mallar. Läggs i ~/.config/noctalia/templates.toml och läses
+# ihop med config.toml. Mallarna går att slå av och på i Noctalias
+# inställningar (Templates); det sparas då i settings.toml.
+#
+# Syntax: https://docs.noctalia.dev/noctalia/theming/templates/
+
+# ----------------------------------------------------------------------
+# Ikoner: färga om Papirus mappikoner (se icons.nix)
+# ----------------------------------------------------------------------
+[theme.templates.user.noctalia-papirus]
+input_path  = "$XDG_CONFIG_HOME/noctalia/templates/Noctalia-Papirus.sh"
+output_path = "~/.cache/noctalia/Noctalia-Papirus-apply.sh"
+post_hook   = "bash ~/.cache/noctalia/Noctalia-Papirus-apply.sh"

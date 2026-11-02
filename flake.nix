@@ -18,7 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     bedrock-on-linux = {
-      url = "github:Wyze3306/BedrockOnLinux/v2.2.7";
+      url = "github:Wyze3306/BedrockOnLinux";
     };
     zed-extensions = {
       url = "github:DuskSystems/nix-zed-extensions";
@@ -26,42 +26,39 @@
     ableton-linux = {
       url = "github:shibco/ableton-linux/aceb236a81656c609274afbf27fd54eb5017e5e2";
     };
+    silentSDDM = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     inputs@{
-      self,
       nixpkgs,
       home-manager,
       ...
     }:
     let
-      system = "x86_64-linux";
+      # Bygger en maskin från hosts/<name>. Allt i modules/nixos/core
+      # följer alltid med; resten väljer varje host själv.
+      mkHost =
+        name:
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./hosts/${name}
+            ./modules/nixos/core
+            home-manager.nixosModules.home-manager
+          ];
+        };
     in
     {
-      nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-        };
-        modules = [
-          ./hosts/desktop
-          home-manager.nixosModules.home-manager
-          {
-            nixpkgs.overlays = [
-              inputs.zed-extensions.overlays.default
-              inputs.nirimod.overlays.default
-            ];
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-            };
-            home-manager.users.isakh = import ./home/isakh;
-            home-manager.sharedModules = [
-              inputs.zed-extensions.homeManagerModules.default
-            ];
-          }
-        ];
+      nixosConfigurations = {
+        desktop = mkHost "desktop";
+        # laptop = mkHost "laptop";
+        # server = mkHost "server";
       };
     };
 }
