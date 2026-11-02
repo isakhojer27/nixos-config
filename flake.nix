@@ -26,6 +26,10 @@
     ableton-linux = {
       url = "github:shibco/ableton-linux/aceb236a81656c609274afbf27fd54eb5017e5e2";
     };
+    silentSDDM = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     inputs@{
