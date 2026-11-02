@@ -24,6 +24,11 @@
     QT_QPA_PLATFORMTHEME = "qt6ct";
   };
 
+  # Standardprogram för mappar (filhanteraren installeras i
+  # modules/home/desktop/file-manager.nix). Sätts här i /etc/xdg istället för
+  # i home-manager, så att en befintlig ~/.config/mimeapps.list inte krockar.
+  xdg.mime.defaultApplications."inode/directory" = "pcmanfm-qt.desktop";
+
   # Starta inte om dbus vid rebuild (kan döda den grafiska sessionen)
   systemd.user.services.dbus-broker = {
     restartIfChanged = false;

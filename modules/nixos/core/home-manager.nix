@@ -9,6 +9,11 @@
   };
   home-manager.users.isakh = import ../../../home/isakh.nix;
 
+  # Om home-manager ska ta över en fil som redan finns (t.ex. en config som
+  # ett program skrivit själv) döps den gamla om till *.hm-backup istället
+  # för att hela aktiveringen avbryts.
+  home-manager.backupFileExtension = "hm-backup";
+
   # Zed-tillägg: HM-modulen och overlayn som modules/home/apps/zed.nix behöver.
   # Overlays måste sättas på systemnivå eftersom HM kör med useGlobalPkgs.
   home-manager.sharedModules = [

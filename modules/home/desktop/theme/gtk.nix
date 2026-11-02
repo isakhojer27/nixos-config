@@ -1,3 +1,4 @@
+# GTK-appar får färger från Noctalias mallar "gtk3"/"gtk4" (noctalia.css).
 { pkgs, ... }:
 {
   xdg.configFile."gtk-4.0/gtk.css".force = true;
@@ -7,10 +8,7 @@
       name = "adw-gtk3";
       package = pkgs.adw-gtk3;
     };
-    iconTheme = {
-      name = "Papirus";
-      package = pkgs.papirus-icon-theme;
-    };
+    # iconTheme sätts i icons.nix
     cursorTheme = {
       name = "Adwaita";
       package = pkgs.adwaita-icon-theme;
