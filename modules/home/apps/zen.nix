@@ -1,4 +1,3 @@
-# Zen-webbläsaren, med ffmpeg tillgängligt så att video fungerar.
 { pkgs, inputs, ... }:
 let
   zenBase = inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;

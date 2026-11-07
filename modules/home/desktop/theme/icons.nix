@@ -1,13 +1,3 @@
-# Ikontema: Papirus, med mappikonerna omfärgade efter Noctalias palett.
-#
-# Så fungerar det:
-#  1. Nix bygger "original": bara mappikonerna (places) ur Papirus, som ett
-#     eget litet ikontema "Noctalia-Papirus" som ärver resten från Papirus.
-#  2. Noctalia kör mallen templates/Noctalia-Papirus.sh varje gång paletten
-#     byts. Den kopierar originalet till ~/.local/share/icons/Noctalia-Papirus
-#     och byter färgerna där.
-#  3. Första gången, innan Noctalia hunnit köra mallen, lägger home-manager
-#     dit en ofärgad kopia så att ikonerna aldrig saknas.
 {
   config,
   lib,
@@ -15,8 +5,6 @@
   ...
 }:
 let
-  # Ikontemat som Noctalia-Papirus bygger på. Byt till "Papirus-Dark" om du
-  # vill ha de mörka varianterna av de minsta ikonerna.
   base = "Papirus";
   themeName = "Noctalia-Papirus";
   themeDir = "${config.xdg.dataHome}/icons/${themeName}";
@@ -25,7 +13,6 @@ let
     src=${pkgs.papirus-icon-theme}/share/icons/${base}
     mkdir -p $out
 
-    # Kopiera alla places-mappar (inte @2x, de länkas nedan)
     for dir in $(grep -E '^Directories=' $src/index.theme | cut -d= -f2 | tr ',' '\n' | grep '/places$'); do
       if [ -d "$src/$dir" ]; then
         mkdir -p "$out/$(dirname "$dir")"
@@ -33,13 +20,11 @@ let
       fi
     done
 
-    # @2x-varianterna är samma filer
     for size in $out/*x*; do
       size=$(basename "$size")
       ln -s "$size" "$out/$size@2x"
     done
 
-    # index.theme: nytt namn, ärver från ${base}, och listar bara mappar som finns
     awk -F= -v out="$out" '
       /^Name=/     { print "Name=${themeName}"; next }
       /^Inherits=/ { print "Inherits=${base},breeze,hicolor"; next }
@@ -61,15 +46,15 @@ let
       pkgs.coreutils
       pkgs.findutils
       pkgs.gnused
-      pkgs.gtk3 # gtk-update-icon-cache
-      pkgs.glib # gsettings
+      pkgs.gtk3
+      pkgs.glib
     ];
   };
 in
 {
   gtk.iconTheme = {
     name = themeName;
-    package = pkgs.papirus-icon-theme; # ger ${base}, som Noctalia-Papirus ärver från
+    package = pkgs.papirus-icon-theme;
   };
   qt.qt6ctSettings.Appearance.icon_theme = themeName;
 

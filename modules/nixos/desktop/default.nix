@@ -1,4 +1,3 @@
-# Det som alla maskiner med grafiskt skrivbord har.
 {
   imports = [
     ./niri.nix

@@ -1,4 +1,3 @@
-# Skrivbordsmiljön: fönsterhanterare, shell/panel, tema, terminal, filhanterare.
 {
   imports = [
     ./niri

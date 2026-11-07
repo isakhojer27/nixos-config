@@ -1,6 +1,3 @@
-# Basen för användaren isakh, på alla maskiner.
-# Det som bara hör till vissa maskiner läggs till i host-filen
-# via home-manager.users.isakh.imports.
 { ... }:
 {
   imports = [

@@ -1,7 +1,3 @@
-# Filhanterare: PCManFM-Qt.
-# Färgerna kommer från Noctalia via Qt-temat i theme/qt.nix.
-# Att den är standard för mappar sätts på systemnivå i
-# modules/nixos/desktop/integration.nix.
 { pkgs, ... }:
 {
   home.packages = with pkgs; [

@@ -1,6 +1,5 @@
 { ... }:
 {
-  # networking.hostName sätts i varje host-fil
   networking.networkmanager.enable = true;
 
   services.resolved.enable = true;

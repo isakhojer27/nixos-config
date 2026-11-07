@@ -1,5 +1,3 @@
-# Stationära datorn. Här väljs vilka roller maskinen har, plus det som
-# bara gäller just den här maskinen. modules/nixos/core följer alltid med.
 { ... }:
 {
   imports = [
@@ -11,7 +9,6 @@
     ../../modules/nixos/services/printing.nix
   ];
 
-  # Samma namn som i flake.nix, så att `nixos-rebuild switch --flake .` räcker
   networking.hostName = "desktop";
 
   fileSystems."/media/sekundär" = {
@@ -23,7 +20,6 @@
     ];
   };
 
-  # Användarmiljö på den här maskinen (basen kommer från home/isakh.nix)
   home-manager.users.isakh.imports = [
     ../../modules/home/desktop
     ../../modules/home/apps

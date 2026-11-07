@@ -19,7 +19,6 @@
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
-    # Hoppa över openldaps tester (de har fallerat i bygget)
     (_: prev: {
       openldap = prev.openldap.overrideAttrs {
         doCheck = false;

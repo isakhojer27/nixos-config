@@ -1,8 +1,3 @@
-# Tema: färgpaletter och mallar för Noctalia, plus GTK, Qt och ikoner.
-#
-# Noctalia äger färgerna och skriver dem till varje programs temafil när
-# paletten byts. Här ligger det Noctalia läser (paletter, mallar) och
-# det som får programmen att använda Noctalias färger.
 { lib, ... }:
 let
   # Alla .json i ./palettes länkas var för sig till ~/.config/noctalia/palettes/,

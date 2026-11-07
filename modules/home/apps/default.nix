@@ -1,5 +1,3 @@
-# Grafiska program. Program med egen konfiguration har en egen fil;
-# program som bara installeras ligger i listan nedan.
 { pkgs, ... }:
 {
   imports = [
@@ -10,26 +8,26 @@
   ];
 
   home.packages = with pkgs; [
-    # Media
+    # media
     spotify
     vlc
     easyeffects
     hypnotix
 
-    # Kommunikation
+    # kommunikation
     discord
     mailspring
 
-    # Kontor och anteckningar
+    # kontor
     obsidian
     euro-office-desktopeditors
 
-    # Filöverföring
+    # filer
     localsend
     qbittorrent
     transmission_4-gtk
 
-    # AI
+    # ai
     lmstudio
   ];
 }

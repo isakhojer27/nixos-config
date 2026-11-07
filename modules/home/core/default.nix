@@ -1,4 +1,3 @@
-# Användarmiljö som ska finnas överallt, även på en server utan skrivbord.
 { pkgs, ... }:
 {
   programs.fish = {

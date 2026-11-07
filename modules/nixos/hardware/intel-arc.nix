@@ -1,4 +1,3 @@
-# Intel Arc-grafikkort
 { pkgs, ... }:
 {
   services.xserver.videoDrivers = [ "modesetting" ];

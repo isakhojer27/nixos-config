@@ -38,8 +38,6 @@
       ...
     }:
     let
-      # Bygger en maskin från hosts/<name>. Allt i modules/nixos/core
-      # följer alltid med; resten väljer varje host själv.
       mkHost =
         name:
         nixpkgs.lib.nixosSystem {
